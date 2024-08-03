@@ -1,5 +1,6 @@
 package hn.unah.lenguajes._0.examen2.Services;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import hn.unah.lenguajes._0.examen2.Entities.Cliente;
@@ -11,6 +12,10 @@ public class ClienteService {
     
     @Autowired
     private ClienteRepository clienteRepository;
+
+    public List<Cliente> obtenerTodos() {
+        return this.clienteRepository.findAll();
+    }
 
     public boolean crearCliente(Cliente nvoCliente) {
         if (this.clienteRepository.existsById(nvoCliente.getDni())) {
