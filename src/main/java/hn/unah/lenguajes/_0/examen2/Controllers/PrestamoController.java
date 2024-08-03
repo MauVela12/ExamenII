@@ -8,6 +8,8 @@ import hn.unah.lenguajes._0.examen2.Services.PrestamoService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 
 @RestController
@@ -26,5 +28,11 @@ public class PrestamoController {
             return "Error al agregar prestamo";
         }
     }
+
+    @GetMapping("/obtenerPorId/{id}")
+    public Prestamo obtener(@PathVariable int id) {
+        return this.prestamoService.buscarPorId(id);
+    }
+    
     
 }

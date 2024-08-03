@@ -6,12 +6,16 @@ import org.springframework.stereotype.Service;
 import hn.unah.lenguajes._0.examen2.Entities.Cliente;
 import hn.unah.lenguajes._0.examen2.Entities.Prestamo;
 import hn.unah.lenguajes._0.examen2.Repositories.ClienteRepository;
+import hn.unah.lenguajes._0.examen2.Repositories.PrestamoRepository;
 
 @Service
 public class PrestamoService {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private PrestamoRepository prestamoRepository;
 
     public boolean crearPrestamo(String id, Prestamo prestamo) {
         Cliente clienteEditar = this.clienteRepository.findById(id).get();
@@ -33,5 +37,9 @@ public class PrestamoService {
         }else {
             return false;
         }
+    }
+
+    public Prestamo buscarPorId(int id) {
+        return this.prestamoRepository.findById(id).get();
     }
 }
